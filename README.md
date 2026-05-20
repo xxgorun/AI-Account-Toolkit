@@ -100,10 +100,49 @@ git submodule update --init --recursive
 
 ### 2. 依赖安装
 
+根据你的操作系统，选择对应的命令：
+
+<details>
+<summary><b>🐧 Linux (Bash)</b></summary>
+
 ```bash
-# 一键安装所有子项目的 Python 依赖
-find . -name "requirements.txt" -not -path "*/node_modules/*" -exec pip install -r {} +
+find . -name "requirements.txt" -not -path "*/node_modules/*" -exec pip install -r {} \;
 ```
+
+> 使用 `\;` 确保每个文件单独执行，兼容性更好
+</details>
+
+<details>
+<summary><b>🍎 macOS (Zsh/Bash)</b></summary>
+
+```bash
+find . -name "requirements.txt" -not -path "*/node_modules/*" -exec pip install -r {} \;
+```
+
+> 如果遇到 `Invalid requirement` 错误，尝试使用 `xargs`：
+> ```bash
+> find . -name "requirements.txt" -not -path "*/node_modules/*" | xargs pip install -r
+> ```
+</details>
+
+
+<details>
+<summary><b>💻 Windows (Git Bash / WSL)</b></summary>
+
+
+```bash
+find . -name "requirements.txt" -not -path "*/node_modules/*" -exec pip install -r {} \;
+```
+
+> 在 Git Bash 或 WSL 环境下运行，与 Linux 命令相同
+
+> 如果使用原生 Windows CMD/PowerShell，可使用：
+> ```powershell
+> Get-ChildItem -Recurse -Filter "requirements.txt" | ForEach-Object { pip install -r $_.FullName }
+> ```
+</details>
+
+> ⚠️ **跨平台说明**：`find ... -exec pip install -r {} +` 在某些 shell 下行为不一致，请使用 `\;` 版本兼容性更好
 
 ---
 
