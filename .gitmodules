@@ -37,9 +37,6 @@
 [submodule "packages/general/api-key-scraper"]
 	path = packages/general/api-key-scraper
 	url = https://github.com/shjee-afridi/Ultimate-openai-gemini-claude-api-key-scraper.git
-[submodule "packages/cursor/cursor-auto-register"]
-	path = packages/cursor/cursor-auto-register
-	url = https://github.com/VictorKTO/cursor-auto-register.git
 [submodule "packages/grok/grok-register"]
 	path = packages/grok/grok-register
 	url = https://github.com/509992828/grok-register.git
